@@ -27,7 +27,7 @@ const LoginFooter: React.FunctionComponent = () => {
             <Grid container spacing={4} className='footer_container'>
                 {footerLinks.map((footer, index) => { 
                     return (
-                    <Grid item xs={ window.innerWidth <= 600 ? 7 : 3} key={index}>
+                    <Grid item xs={ window.innerWidth <= 600 ? 7 : 2.5} key={index}>
                         <Link draggable={false} id='link_style' className='rightToLeftAnimation' to={footer.link}>{t(footer.text)}</Link>
                     </Grid>
                     )
