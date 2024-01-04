@@ -34,8 +34,10 @@
     }
 
     .footer_container {
+        gap: 20px;
         padding: 20px;
         background-color: rgba(0, 0, 0, 0.75);
+        width: fit-content;
     }
 
     #link_style {

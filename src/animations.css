@@ -27,8 +27,6 @@
     animation: moveLeftRight 5s cubic-bezier(0.4, 0, 0.6, 1) infinite; 
   }
 
-  
-
   @keyframes rotateAnimation {
     0% {
       transform: rotate(370deg);
@@ -40,4 +38,17 @@
   
   .rightToLeftAnimation {
     animation: rotateAnimation 1000ms infinite alternate ;
+  }
+
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .element {
+    animation: scaleIn 1.5s ease-in infinite alternate;
   }

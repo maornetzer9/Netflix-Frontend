@@ -12,6 +12,7 @@ import LoginService from '../../requests/login';
 import Transition from '../Transition/Transition';
 import './login.css';
 import "../../animations.css"
+import TranslateDropDown from '../Translate-DropDown/TranslateDropDown';
 
 const Login: React.FunctionComponent = () => {
 
@@ -26,7 +27,7 @@ const Login: React.FunctionComponent = () => {
 
     const handleEmail = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => setEmail(value);
     const handlePassword = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => setPassword(value);
-
+   
     const handleSign = async () => {
 
         const response: any = await new LoginService(baseUrl).login(email, password);
@@ -40,50 +41,28 @@ const Login: React.FunctionComponent = () => {
         navigate('/Netflix');
     }
 
+    const handleEnterKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        console.log('work');
+        if (e.key === 'Enter') {
+          e.preventDefault(); 
+          handleSign();
+        }
+      };
+
     return (
         <Transition timeOut={600}>
-            <Box component={'div'} >
+            <Box component={'div'}>
                 <Box component={'div'} id='page_background'>
                     <Box component={'div'} id='netflix_logo'>
 
-                        <ImageModel url={NetflixLogo} preview={false} />
+                        <ImageModel className='rightToLeftAnimation' url={NetflixLogo} preview={false} />
                     </Box>
-                    <Box component={'div'} id='translate_container'>
-                        <Select
-                            value={currentLanguage}
-                            onChange={(e) => changeLanguage(e.target.value as string)}
-                            style={{ backgroundColor: 'rgba(0,0,0,.75)', color: 'rgb(110, 110, 110)' }}
-                            renderValue={(lang) => (
-                                <>
-                                    <Box component={'div'} display={'flex'} alignItems={'center'}>
-                                        <MdLanguage
-                                            size={'20px'}
-                                            color='rgb(110, 110, 110)'
-                                            style={{ marginRight: '10px' }}
-                                        />
-                                        {lang === 'en' ? 'English' : 'עברית'}
-                                    </Box>
-                                </>
-                            )}
-                            MenuProps={{
-                                PaperProps: {
-                                    style: {
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        backgroundColor: 'rgba(0,0,0,.75)',
-                                        color: 'rgb(110, 110, 110)',
-                                    },
-                                },
-                            }}
-                        >
-                            <MenuItem value="en" onClick={() => changeLanguage('en')}> English </MenuItem>
-                            <MenuItem value="he" onClick={() => changeLanguage('he')}>  עברית  </MenuItem>
-                        </Select>
-                    </Box>
+                    <TranslateDropDown/>
                     <Transition timeOut={650}>
                         <Box
                             id='login_body'
                             component={'div'}
+                            onKeyDown={handleEnterKeyPress}
                             dir={currentLanguage === 'he' ? 'rtl' : 'ltr'}
                         >
                             <Box component={'div'} id='login_body_content'>
@@ -105,13 +84,14 @@ const Login: React.FunctionComponent = () => {
                                     component={'div'}
                                 >
                                     <Button
+                                        tabIndex={0}
                                         color='error'
                                         variant='contained'
                                         className='elements_form'
                                         style={{ marginTop: '20px' }}
                                         onClick={handleSign}
                                     >
-                                        {t('Sign In')}
+                                       {t('Sign In')} 
                                     </Button>
                                     <Box
                                         className='checkbox_container'
@@ -139,15 +119,16 @@ const Login: React.FunctionComponent = () => {
                                         id='user_explanation'
                                         component={'div'}
                                     >
-                                        <ImageModel className='moving-element' url={NetflixLogo} preview={false}/>
+                                        <ImageModel className='element' url={NetflixLogo} preview={false} />
                                         <Typography
+                                            className='element'
                                             variant='body1'
                                         >
                                             {t('New to Netflix - ')}
                                             <Link
                                                 to={'/'}
                                                 className='link_style'
-                                                style={{ color: 'white', textDecoration: 'line-through' }}
+                                                style={{ color: 'white', textDecoration:'line-through' }}
                                             >
                                                 {t('Sign up')}
                                             </Link>
