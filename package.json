@@ -2,10 +2,6 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/maornetzer9/Netflix-Frontend.git"
-  },
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",

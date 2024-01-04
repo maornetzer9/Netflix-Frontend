@@ -19,7 +19,6 @@ const ImageHover: React.FunctionComponent<IImageHover> = ({ url, styles, isHover
 
     const handleLike = () => setLike(true);
     const handleUnLike = () => setLike(false);
-
     const hoverState = isHovered || isHover;
 
     return (

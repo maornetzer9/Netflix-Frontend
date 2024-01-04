@@ -5,8 +5,6 @@ import HomePage from '../Home-Page/HomePage'
 
 
 const Netflix: React.FunctionComponent = () => {
-
-
     return (
         <Box component={'div'} >
             <Section key={1}> <HomePage/> </Section>
