@@ -1,0 +1,43 @@
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+
+  @keyframes moveLeftRight {
+    0% {
+      transform: translateX(25%);
+    }
+    50% {
+      transform: translateX(-25%);
+    }
+    100% {
+      transform: translateX(25%);
+    }
+  }
+  
+  .moving-element {
+    animation: moveLeftRight 5s cubic-bezier(0.4, 0, 0.6, 1) infinite; 
+  }
+
+  
+
+  @keyframes rotateAnimation {
+    0% {
+      transform: rotate(370deg);
+    }
+    100% {
+        transform: rotate(355deg);
+      }
+  }
+  
+  .rightToLeftAnimation {
+    animation: rotateAnimation 1000ms infinite alternate ;
+  }

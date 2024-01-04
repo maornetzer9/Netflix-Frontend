@@ -1,0 +1,9 @@
+.image_hover {
+    position: absolute;
+    height: 50px;
+    bottom: 0%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #1E2832;
+}
